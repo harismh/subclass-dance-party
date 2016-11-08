@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   window.dancers = [];
 
   $('.addRandomDancer').on('click', function(e) {
@@ -38,7 +39,6 @@ $(document).ready(function() {
     });
 
   });
-
 
 
   $('.addDancerButton').on('click', function(event) {
