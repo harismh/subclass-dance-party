@@ -1,6 +1,46 @@
 $(document).ready(function() {
   window.dancers = [];
 
+  $('.addRandomDancer').on('click', function(e) {
+    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+    var dancerMakerFunction = window[dancerMakerFunctionName];
+    
+    var dancer = new ColorDancer (
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
+      Math.random() * 1000
+      );
+
+    dancer.changeColor();
+
+    $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+
+  });
+
+  $('.addMouseDancer').on('click', function(e) {
+    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+    var dancerMakerFunction = window[dancerMakerFunctionName];
+    
+    var dancer = new MouseDancer (
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
+      Math.random() * 1000
+      );
+
+    $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+
+    $(document).mousemove(function(e) {
+      $mouseX = e.pageX;
+      $mouseY = e.pageY;
+      dancer.followMouse($mouseX, $mouseY);    
+    });
+
+  });
+
+
+
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -26,7 +66,7 @@ $(document).ready(function() {
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
       Math.random() * 1000
-    );
+      );
     
     $('body').append(dancer.$node);
     window.dancers.push(dancer);

@@ -14,12 +14,27 @@ Dancer.prototype.step = function() {
 Dancer.prototype.setPosition = function(top, left) {
   var styleSettings = {
     top: top,
-    left: left
+    left: left,
   }; 
   
   this.$node.css(styleSettings);
 };
 
+Dancer.prototype.lineLeft = function() {
+  var styleSettings = {
+    left: 0
+  };
+
+  this.$node.css(styleSettings);
+};
+
+Dancer.prototype.lineUp = function() {
+  var styleSettings = {
+    top: 250
+  };
+
+  this.$node.css(styleSettings);
+};
 
 // Creates and returns a new dancer object that can step
 // var makeDancer = function(top, left, timeBetweenSteps) {
